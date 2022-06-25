@@ -1,48 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Input } from '@innovaccer/design-system';
-import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+// import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import "@innovaccer/design-system/css";
+import { Button } from "@innovaccer/design-system";
+
 
 function Footer() {
-
-    const [value, setValue] = React.useState('Joy Lawson');
-
-    // const onChange = React.useCallback((e) => {
-    //   setValue(e.target.value);
-    // }, []);
-    // function onChange(){
-        
-    // }
-  
-    // const onClear = React.useCallback(() => {
-    //   setValue('');
-    // }, []);
-    // function onClear(){
-
-    // }
-
+    const [inp, setInp] = React.useState(""); 
+    const [val, setVal] = React.useState("");
+    function onChangeHandler(event)
+    {
+        setInp(event.target.value);
+    }
+    function onSubmitHandler()
+    {
+        setVal(inp)
+    }
+    
   return (
     <>
-        <div style={{backgroundColor:"purple"}}>
+    <div className="fixed-bottom" style={{backgroundColor:"purple"}}>
         <div className='mx-auto' style={{backgroundColor:"green", width: "calc(100vmin)", height:"55px", display:"flex"}}>
-        {/* <Input
-      placeholder="Name"
-      name="input"
-      className="w-25"
-    /> */}
-        <Input placeholder='Name' name='input' className='w-25' />
-      
-            
-            <div className="d-flex flex-column">
-            <h4 className='pb-0 mb-0'>Priya Jha</h4>
-            <p className='pt-0 mt-0'>last seen today at </p>
-            </div>
+            <input type="text" class="form-control w-75 m-2" id="formGroupExampleInput" placeholder="Type a message" onChange={onChangeHandler} ></input>
+            <Button className='m-2' onClick={onSubmitHandler} 
+            appearance="success"
+            aria-label="Next in rank"
+            icon="keyboard_arrow_right"
+            tooltip="Next in rank" size='large'
+            > </Button>
         </div>
     </div>
-    
+
     </>
+    
   )
 }
 
